@@ -394,7 +394,36 @@ h6 {
   }
 }
 
-/* Navmenu - Mobile */
+/* Navmenu - Mobile *//* Ensure the menu is hidden on smaller screens */
+@media (max-width: 991px) {
+  .navmenu ul {
+    display: none; /* Hide menu items by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust this based on the header height */
+    width: 100%;
+    background-color: #fff; /* Optional: You can set the background color */
+    padding: 10px 0;
+  }
+
+  /* Show the menu when the toggle button is clicked */
+  .navmenu.navbar-mobile ul {
+    display: flex;
+  }
+
+  .navmenu ul li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .mobile-nav-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    color: #000;
+    z-index: 999;
+  }
+}
+
 @media (max-width: 1199px) {
   .mobile-nav-toggle {
     color: var(--nav-color);
@@ -873,83 +902,123 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-.hero {
-  width: 100%;
-  min-height: 80vh;
-  position: relative;
-  padding: 100px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--default-color);
-}
-
-.hero img {
+.swiper-slide::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  display: block;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: rgba(0, 0, 0, 0); /* <- Bolder overlay */
   z-index: 1;
 }
 
-.hero:before {
-  content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 60%);
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+.swiper-slide .container {
+  z-index: 2; /* Ensures text appears above overlay */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.231); /* Stronger shadow */
 }
 
-.hero .container {
+.swiper-container {
+  width: 90%;
+  height: 60vh;
   position: relative;
-  z-index: 3;
 }
 
-.hero h2 {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 700;
+/* Fix slide size */
+.swiper-slide {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 10px 0 0 0;
-  font-size: 24px;
+/* Control image size */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.hero .btn-get-started {
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 35px 10px 35px;
-  border-radius: 50px;
-  transition: 0.4s;
-  margin-top: 30px;
-  border: 2px solid var(--default-color);
-  color: var(--default-color);
+/* Text container */
+.swiper-slide .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 10;
+  padding: 10px;
 }
 
-.hero .btn-get-started:hover {
-  background: var(--accent-color);
-  border: 2px solid var(--accent-color);
+/* Text styling */
+.swiper-slide h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
+.swiper-slide p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.swiper-slide .btn-get-started {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background-color: #0056b3;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.swiper-slide .btn-get-started:hover {
+  background-color: #008238;
+}
+
+/* Responsive text and buttons */
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 32px;
+  .swiper-slide h2 {
+    font-size: 1.6rem;
   }
 
-  .hero p {
-    font-size: 18px;
+  .swiper-slide p {
+    font-size: 1rem;
   }
+
+  .swiper-slide .btn-get-started {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+}
+
+/* Center the swiper pagination dots */
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Optional: Limit slides visible */
+.swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+/* Add your about section styling here */
+
 .about .content h3 {
   font-size: 2rem;
   font-weight: 700;
