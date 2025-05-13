@@ -954,13 +954,15 @@ section,
 /* Text container */
 .swiper-slide .container {
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   color: white;
   text-align: center;
   z-index: 10;
-  padding: 10px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3); /* optional: subtle dark background for better readability */
+  width: 100%; /* optional: span full width */
 }
 
 /* Text styling */
