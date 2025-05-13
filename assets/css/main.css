@@ -233,9 +233,9 @@ h6 {
   line-height: 1;
 }
 
-.header .logo img {
-  max-height: 80px;
-  margin-right: 30px;
+header .logo img {
+  max-height: 50px;
+  margin-right: 10px;
 }
 
 .header .logo h1 {
@@ -902,16 +902,21 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-.swiper-slide::before {
-  content: "";
+.hero .swiper-slide::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0); /* <- Bolder overlay */
+  width: 50%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0); /* adjust for contrast */
   z-index: 1;
 }
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
 
 .swiper-slide .container {
   z-index: 2; /* Ensures text appears above overlay */
@@ -939,11 +944,12 @@ section,
 }
 
 /* Control image size */
-.swiper-slide img {
+.hero .swiper-slide img {
   width: 100%;
-  height: 100%;
+  height: 55vh;
   object-fit: cover;
 }
+
 
 /* Text container */
 .swiper-slide .container {
@@ -960,9 +966,12 @@ section,
 /* Text styling */
 .swiper-slide h2 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 800; /* Increased for boldness */
   margin-bottom: 15px;
+  color: black; /* Make the text black */
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); /* White shadow for contrast */
 }
+
 
 .swiper-slide p {
   font-size: 1.1rem;
@@ -1093,14 +1102,14 @@ section,
   font-weight: 700;
 }
 
-.counts .stats-item p {
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  padding: 0;
-  margin: 0;
-  font-family: var(--heading-font);
-  font-size: 15px;
-  font-weight: 600;
+.stats-item {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
+
 
 /*--------------------------------------------------------------
 # Why Us Section
